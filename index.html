@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+  <head>
+    <title></title>
+    <script type="module" src="./script.js" defer></script>
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="controls">
+      <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="search" />
+      </form>
+    </div>
+
+    <div class="sorting">
+      <div><input type="radio" name="sort" value="location" id="venueSort" checked /> sort by venue</div>
+      <div><input type="radio" name="sort" value="title" id="titleSort" /> sort by title</div>
+    </div>
+
+    <div class="events">
+      <h1>Highlighted event</h1>
+      <div id="randomEvent">
+
+      </div>
+      <h1>Other events</h1>
+      <div id="eventContainer">
+      </div>
+    </div>
+  </body>
+</html>
