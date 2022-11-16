@@ -1,6 +1,6 @@
 "use strict";
 
-
+import Cleave from "cleave.js";
 import Shows from "./Shows.js";
 
 const app = {
@@ -26,7 +26,7 @@ const app = {
             })
             .then(data => {
                 data.forEach(element => {
-                    console.log(element); 
+                    console.log(element);
                     const title = element.name;
                     const genre = element.genres;
                     const image = element.image.medium;

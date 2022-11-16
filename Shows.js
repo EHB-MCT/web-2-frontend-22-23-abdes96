@@ -9,17 +9,17 @@ this._runtime = runtime;
 this._summary = summary; 
 }
 
-get description() {
-    return this._description;
-}
+
 
 get htmlString()   {          
     
     return `<div class="event">
     <img src="${this._image}" />
     <h1>${this._title}</h1>
-    <p class="description">${this._genre}</p>
+    <p class="genre">${this._genre}</p>
     <p class="runtime">${this._runtime} min</p>
+    <button>  <a href="">  add to to-see list</a></button>
+
   </div>`;
  }
 }

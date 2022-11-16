@@ -1,0 +1,25 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96/issues"
+  },
+  "homepage": "https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96#readme",
+  "dependencies": {
+    "cleave.js": "^1.6.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "keywords": [],
+  "description": ""
+}
