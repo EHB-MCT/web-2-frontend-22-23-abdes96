@@ -4,12 +4,19 @@ import Shows from "./Shows.js";
 
 const app = {
    showlist: [],
-
+   filteredEventList :  [],
+   searchTerm: "",
  setup (){ 
 
     window.onload = () => {
       this.fetchEvents();
 
+      
+      document.getElementById("searchForm").addEventListener('keyup', () => {
+        let value = document.getElementById("searchInput").value;
+        this.applyFilter(value.toLowerCase()); 
+        console.log(value);
+         });
 };
 
 
@@ -25,7 +32,7 @@ const app = {
             })
             .then(data => {
                 data.forEach(element => {
-                    //console.log(element);
+                    //console.log(data);
                     const title = element.name;
                     const genre = element.genres;
                     const image = element.image.medium;
@@ -36,12 +43,16 @@ const app = {
 
                     shows = new Shows (title,genre,image,runtime,summary)
                     this.showlist.push(shows);
+                    this.filteredEventList = this.showlist;
+
 
                     });
                 this.render();
                 });
 
 },
+
+
 
  render() {
     let htmlEvent = document.getElementById("eventContainer");
@@ -53,7 +64,19 @@ const app = {
     htmlEvent.innerHTML = htmlString;
 }, 
 
+applyFilter(value) {
+    this.searchTerm = value;
+    const filter = this.filteredEventList.filter(element => 
+        {
+        if (element._title.toLowerCase().includes(value)) {
+          return true;
+      }
 
+       });
+       this.showlist = filter;
+       this.render();
+
+},
 
 };
 
