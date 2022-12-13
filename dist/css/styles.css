@@ -12,14 +12,15 @@ body {
 display: flex;
 width: 25%;
 }
-  .header {
+  header {
     width: 100%;
     margin-top: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     
 
 }
+
 .navigation ul  {
   display: flex;
   width: 100%;
@@ -44,29 +45,39 @@ width: 25%;
 
 }
 
+.navigation a:hover {
+  color: rgb(177, 86, 86);
+
+}
+
+
 .wrap {
   display: flex;
 justify-content: center;
 }
-
+.Search h1 {
+  display: flex;
+  font-size: 20px;
+  margin-right: 20px;
+}
 .Search {
   position:absolute;
   display:flex;
-width: 90%;
-justify-content: center;
+width: 80%;
+justify-content: space-around;
 margin: 100px;
 }
 #searchForm {
   display: flex;
-flex-direction: row; 
+flex-direction: row;
+height: 50px;
 
 
 }
 #searchInput {
-  
   font-size: 20px;
   display: flex;
-  border-bottom: 2px solid white;
+  border-bottom: 3px solid rgb(177, 86, 86);
   border-right: none;
   padding: 20px;
   border-radius: 50px 5px 50px 5px;
@@ -82,7 +93,7 @@ flex-direction: row;
 .searchButton {
   margin-left: 50px;
   border-radius: 50px 5px 25px 5px;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid rgb(177, 86, 86);
   background: rgb(126, 40, 40);
   text-align: center;
   color: white;  cursor: pointer;
@@ -91,12 +102,68 @@ flex-direction: row;
 
 }
 
+.genre {
+  display: flex;
+flex: 1;
+justify-content: center;
+
+}
+
+select {
+  
+  color: white;
+  background: rgb(126, 40, 40);
+  border:  none;
+  border-radius: 50px 5px 25px 5px;
+  border-bottom: 2px solid rgb(177, 86, 86);
+  background-image: none;
+  flex: 1;
+  padding: 0 .5em;
+  cursor:pointer;
+  font-size: 15px;
+  font-family: 'Domine', sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+
+select::-ms-expand {
+  display: none;
+
+}
+
+.select {
+  background-color: rgb(126, 40, 40);
+  border-radius: 50px 5px 25px 5px;
+  position: relative;
+  display: flex;
+  line-height: 5;
+  overflow: hidden;
+  height: 40px;
+
+
+}
+
+.select::after {
+  border: 0px;
+  content: '\25BC';
+  position: absolute;
+  top: -17px;
+  right: -12px;
+  border-radius: 50px 5px 25px 5px;
+  border-bottom: 2px solid rgb(177, 86, 86);
+  padding: 0 1em;
+  cursor:pointer;
+  pointer-events:none;
+  transition:.25s all ease;
+}
+.select:hover::after {
+  color: rgb(177, 86, 86);
+  background-color: rgb(177, 86, 86);
+}
 
   
-  .sorting {
-    font-size: 20px  ;
-    margin-left: 20px;
-  }
+  
   
   #eventContainer {
     margin-top: 100px;

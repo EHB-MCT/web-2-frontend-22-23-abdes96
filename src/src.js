@@ -6,6 +6,7 @@ const app = {
    showlist: [],
    filteredEventList :  [],
    searchTerm: "",
+
  setup (){ 
 
     window.onload = () => {
@@ -15,9 +16,19 @@ const app = {
       document.getElementById("searchForm").addEventListener('keyup', () => {
         let value = document.getElementById("searchInput").value;
         this.applyFilter(value.toLowerCase()); 
-        console.log(value);
+        //console.log(value);
          });
-};
+
+     document.getElementById("genre").addEventListener('click', () => { 
+        let genre = document.getElementById('genre').value;
+        
+        this.genreFilter(genre);
+     });
+
+     
+
+
+        };
 
 
 
@@ -48,6 +59,7 @@ const app = {
 
                     });
                 this.render();
+                this.InfoPage();
                 });
 
 },
@@ -75,7 +87,43 @@ applyFilter(value) {
        });
        this.showlist = filter;
        this.render();
+       this.InfoPage();
 
+
+},
+
+ genreFilter(genre) {
+
+    const filterGenre = this.filteredEventList.filter(element => 
+        {
+        if (element._genres.includes(genre)   ) {
+
+            return true;
+            
+        }
+
+    });
+    
+     this.showlist = filterGenre ;
+
+      this.render();
+
+},
+
+ InfoPage() {
+    const show = document.getElementsByClassName("event");
+    let ShowsArray = [].slice.call(show);
+
+    ShowsArray.forEach(show => {
+        show.addEventListener("click", function (e) {
+            setTimeout(500)
+            e.preventDefault();            
+
+            let showName = show.nextSibling.id;
+
+            window.location.href = `./showinfo.html?id=${showName}`;
+        })
+    })
 },
 
 };
