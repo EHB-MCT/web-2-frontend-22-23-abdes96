@@ -48,11 +48,12 @@ const app = {
                     const genre = element.genres;
                     const image = element.image.medium;
                     const runtime = element.runtime;
-                    const summary = element.summary; 
+                    const summary = element.summary;
+                    const id =  element.id;
 
                     let shows = "";
 
-                    shows = new Shows (title,genre,image,runtime,summary)
+                    shows = new Shows (title,genre,image,runtime,summary,id)
                     this.showlist.push(shows);
                     this.filteredEventList = this.showlist;
 
@@ -117,11 +118,13 @@ applyFilter(value) {
     ShowsArray.forEach(show => {
         show.addEventListener("click", function (e) {
             setTimeout(500)
-            e.preventDefault();            
+            e.preventDefault(); 
+            
+            let showName = show.id;
+            console.log(showName)
+             //https://www.w3schools.com/js/js_window_location.asp
 
-            let showName = show.nextSibling.id;
-
-            window.location.href = `./showinfo.html?id=${showName}`;
+           window.location.href = `./showinfo.html?id=${showName}`;
         })
     })
 },
