@@ -106,10 +106,13 @@ applyFilter(value) {
     });
     
      this.showlist = filterGenre ;
-
       this.render();
+      this.InfoPage();
+      
 
 },
+
+
 
  InfoPage() {
     const show = document.getElementsByClassName("event");

@@ -17,17 +17,26 @@ const app = {
           console.log(element);
 
           let ShowName = element.name;
-          const genre = element.genres;
           const image = element.image.original;
           const runtime = element.runtime;
           const summary = element.summary;
+          const rating = element.rating.average;
 
           let container = document.getElementById("show");
           let htmlString = "";
 
           htmlString += `   
-                            <div class="nameandscore">
-                                <img src="${image}"> 
+                         <div class="Show">
+                         <div> 
+                                <img src="${image}">
+                                <h1>${ShowName}</h1>
+                       </div>
+                       <div class="info">
+                       <p id="rating">rating : ${rating}</p>
+                             ${summary}
+                       <p id="runtime">${runtime} min</p>
+                          <button>  <span href="">  add to to-see list</span></button>
+                            </div>
                             </div>
                             `;
 

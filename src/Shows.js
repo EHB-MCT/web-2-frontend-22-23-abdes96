@@ -14,13 +14,15 @@ this._id = id;
 
 get htmlString()   {          
     
-    return `<div class="event" id="${this._id}">
-    <img src="${this._image}" />
+    return `<div class="show" >
+    <div class="event" id="${this._id}">
+    <a> <img src="${this._image}" /></a> 
+    </div>
     <h1>${this._title}</h1>
     <p class="genre">${this._genres}</p>
     <p class="runtime">${this._runtime} min</p>
-    <button>  <a href="">  add to to-see list</a></button>
-
-  </div>`;
+    <button>  <span>  add to to-see list</span></button>
+</div>
+  `;
  }
 }
