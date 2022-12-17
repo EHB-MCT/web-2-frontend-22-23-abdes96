@@ -1,3 +1,5 @@
+window.onload = function () {
+
   document.getElementById("signIn").addEventListener("submit", e => {
     e.preventDefault();
 
@@ -7,9 +9,19 @@
 
     console.log(user.email, user.password);
 
-    getData("https://localhost:4000/login", "POST", user).then(data => {
-      console.log(data);
+    getData("http://localhost:3000/login", "POST", user).then(result => {
+      alert(result.message);
+      sessionStorage.setItem('user', JSON.stringify(result.data));
+
+      if (result.data == null ) {
+        console.log('missing');
+      }
+      else {
+        window.location.href = "./index.html"
+      }
+
     });
+
   });
 
   async function getData(url, method, data) {
@@ -22,4 +34,4 @@
     });
     return await resp.json();
   }
-
+}

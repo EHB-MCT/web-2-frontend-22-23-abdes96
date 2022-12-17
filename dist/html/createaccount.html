@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../../src/login.js" defer></script>
+    <script type="module" src="../../src/register.js" defer></script>
 
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Document</title>
@@ -19,14 +19,17 @@
         </header>
         <h2>Login</h2>
         <form id="signIn" class="signIn">
+
           <div class="inputs">
             <label>Firstname</label>
             <input type="text" id="inputfirstname" />
           </div>
+          
           <div class="inputs">
             <label>Lastname</label>
             <input type="text" id="inputlastname" />
           </div>
+
           <div class="inputs">
             <label>Email</label>
             <input type="text" id="inputemail" name="email" />
@@ -36,6 +39,12 @@
             <label>Password</label>
             <input type="password" id="inputpassword" />
           </div>
+
+          <div class="inputs">
+            <label>Repeat password</label>
+            <input type="password" id="inputpassword2" />
+          </div>
+
 
           <input type="submit" value="Register" />
         </form>
