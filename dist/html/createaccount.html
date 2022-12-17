@@ -4,20 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../../src/login.js" defer></script>
+
+    <link rel="stylesheet" href="../css/styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <img src="../image/logo.png" />
+    <div class="wrap">
+      <div class="login">
+        <header>
+          <div class="logo">
+            <img src="../image/logo.png" />
+          </div>
+        </header>
+        <h2>Login</h2>
+        <form id="signIn" class="signIn">
+          <div class="inputs">
+            <label>Firstname</label>
+            <input type="text" id="inputfirstname" />
+          </div>
+          <div class="inputs">
+            <label>Lastname</label>
+            <input type="text" id="inputlastname" />
+          </div>
+          <div class="inputs">
+            <label>Email</label>
+            <input type="text" id="inputemail" name="email" />
+          </div>
+          
+          <div class="inputs">
+            <label>Password</label>
+            <input type="password" id="inputpassword" />
+          </div>
+
+          <input type="submit" value="Register" />
+        </form>
+        <p id="loginwrong">Wrong password or email</p>
       </div>
-      <div class="navigation">
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="#">SHOWS</a></li>
-          <li><a href="#">MY LIST </a></li>
-        </ul>
+      <div id="loginImg">
+        <img src="./../image/sign.jpg" />
+        <p>Save your Movies and Shows</p>
+        <p class="intro">
+          You'll never find and save movies and shows so easily!
+        </p>
       </div>
-    </header>
+    </div>
   </body>
 </html>

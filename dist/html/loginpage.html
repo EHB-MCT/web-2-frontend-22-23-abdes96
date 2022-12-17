@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../../src/login.js" defer></script>
+
+    <link rel="stylesheet" href="../css/styles.css" />
     <title>Document</title>
-</head>
-<body>
-    
-        
-      
-<div class="wrap">
-            <div class="login">
-               <header> <div class="logo">
-                    <img src="../image/logo.png">
-                </div>
-            </header>
-            <h2>Login</h2>
-            <form id="signIn" class="signIn">
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="login">
+        <header>
+          <div class="logo">
+            <img src="../image/logo.png" />
+          </div>
+        </header>
+        <h2>Login</h2>
+        <form id="signIn" class="signIn">
+          <div class="inputs">
+            <label>Email</label>
+            <input type="text" id="inputemail" name="email" />
+          </div>
 
-                <div class="inputs">
-                    <label>Email</label>
-                    <input type="text" id="email" name="email">
-                </div>
+          <div class="inputs">
+            <label>Password</label>
+            <input type="password" id="inputpassword" />
+          </div>
 
-                <div class="inputs">
-                    <label>Password</label>
-                    <input type="password" id="passwordLogin" id="password">
-                </div>
-
-                <input type="submit" value="Sign in">
-            </form>
-            <p  id='loginwrong'> Wrong password or email </p>
-            <p class="NotRegistered">Not registred yet ? <button href="./createaccount.html"> <span> Create an account</span></button></p>
-        </div>
-            <div id="loginImg">
-            <img src="./../image/sign.jpg">
-            <p>Save your Movies and Shows</p>
-            <p class="intro">You'll never find and save movies and shows so easily!
-               </p>
-            </div>
+          <input type="submit" value="Sign in" />
+        </form>
+        <p id="loginwrong">Wrong password or email</p>
+        <p class="NotRegistered">
+          Not registred yet ?
+          <button href="./createaccount.html">
+            <span> Create an account</span>
+          </button>
+        </p>
+      </div>
+      <div id="loginImg">
+        <img src="./../image/sign.jpg" />
+        <p>Save your Movies and Shows</p>
+        <p class="intro">
+          You'll never find and save movies and shows so easily!
+        </p>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>
