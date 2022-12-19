@@ -19,7 +19,7 @@ document.getElementById("signIn").addEventListener("submit", e => {
         alert(result.message)
         sessionStorage.setItem('user', JSON.stringify(result.data))
         if (result.data == null ) {
-          //console.log('missing');
+          //console.log('missing')
         }
         else {
           window.location.href = "./loginpage.html"
