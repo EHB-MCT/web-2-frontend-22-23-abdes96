@@ -109,13 +109,11 @@ select {
   border-radius: 50px 5px 25px 5px;
   border-bottom: 2px solid rgb(177, 86, 86);
   background-image: none;
-  flex: 1;
   padding: 0 0.5em;
   cursor: pointer;
   font-size: 15px;
   font-family: "Domine", sans-serif;
   height: 100%;
-  width: 100%;
 }
 
 select::-ms-expand {
@@ -352,18 +350,39 @@ input[type=submit] {
   cursor: pointer;
 }
 
+/* my profile page */
+
 .settings {
   flex:1;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Domine';
+  margin: 100px;
 }
 .settings h2 {
   font-size: 30px;
   padding-right: 50px;
 }
 
-.settings button {
+.settings button  {
   font-family: 'Domine';
+}
+
+
+.profiledata Input 
+{
+width: 70%;
+}
+.profiledata button  {
+  padding:  10px;
+}
+
+.profiledata h2 {
+  font-size: 20px;
+}
+
+.settings i {
+  font-size: 18px;
+  padding: 0;
 }

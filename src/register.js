@@ -10,7 +10,6 @@ document.getElementById("signIn").addEventListener("submit", e => {
     user.password = document.getElementById("inputpassword").value;
     user.password2 = document.getElementById("inputpassword2").value;
 
-    console.log(user.password,user.password2);
   
 
   //check passwords
@@ -23,6 +22,7 @@ document.getElementById("signIn").addEventListener("submit", e => {
         }
         else {
           window.location.href = "./loginpage.html"
+
         }
 
     } )

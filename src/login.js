@@ -7,7 +7,6 @@ window.onload = function () {
     user.email = document.getElementById("inputemail").value;
     user.password = document.getElementById("inputpassword").value;
 
-    console.log(user.email, user.password);
 
     getData("http://localhost:3000/login", "POST", user).then(result => {
       alert(result.message);
@@ -15,6 +14,8 @@ window.onload = function () {
 
       if (result.data == null ) {
         console.log('missing');
+        document.getElementById("loginwrong").style.display = "block";
+
       }
       else {
         window.location.href = "./index.html"
@@ -34,4 +35,6 @@ window.onload = function () {
     });
     return await resp.json();
   }
+
+
 }
