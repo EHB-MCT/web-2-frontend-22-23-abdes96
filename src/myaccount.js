@@ -1,10 +1,8 @@
 window.onload = function () {
-
-    
-    //all data
+  //all data
   profiledata();
 
-  //delete 
+  //delete
   document.getElementById("deleteprofile").addEventListener("click", () => {
     document.getElementById("confirm").style.display = "block";
     deletProfile();
@@ -16,30 +14,25 @@ window.onload = function () {
     update();
   });
 
-
   //logout
-document.getElementById("Logout").addEventListener("click", () => {
+  document.getElementById("Logout").addEventListener("click", () => {
     sessionStorage.clear();
     window.location.href = "./loginpage.html";
-
   });
+};
 
-  };
+function profiledata() {
+  //https://stackoverflow.com/questions/63300478/how-to-get-value-from-session-storage
 
+  let userId = sessionStorage.getItem("user");
+  let data = JSON.parse(userId);
+  let email = data.email;
+  let firstname = data.firstname;
+  let lastname = data.lastname;
 
+  let htmlString = "";
 
-  function profiledata() {
-    //https://stackoverflow.com/questions/63300478/how-to-get-value-from-session-storage
-
-    let userId = sessionStorage.getItem("user");
-    let data = JSON.parse(userId);
-    let email = data.email;
-    let firstname = data.firstname;
-    let lastname = data.lastname;
-
-    let htmlString = "";
-
-    htmlString += ` <h2 class="profildata" id=" textprofil">First name : ${firstname} </h2>
+  htmlString += ` <h2 class="profildata" id=" textprofil">First name : ${firstname} </h2>
     <h3 class="firstname" id="firstname"></h3>
     <h2 class="profildata">Last Name : ${lastname} </h2>
    
@@ -66,73 +59,55 @@ document.getElementById("Logout").addEventListener("click", () => {
     </div>
     `;
 
-    let profileData = document.getElementById("profiledata");
+  let profileData = document.getElementById("profiledata");
 
-    profileData.insertAdjacentHTML("afterbegin", htmlString);
-  }
-
-
-
-
-
-
-function deletProfile() {
-    let userId = sessionStorage.getItem('user')
-    let user = JSON.parse(userId);
-
-    // confirm button
-    document.getElementById("confirm").addEventListener("click", () => {
-
-        getData("http://localhost:3000/ID", "DELETE", user).then(result => {
-            alert(result.message);
-            sessionStorage.clear();
-            window.location.href = "./loginpage.html";
-      
-          });
-
-      });
-
-
-
+  profileData.insertAdjacentHTML("afterbegin", htmlString);
 }
 
-function update () {
+function deletProfile() {
+  let userId = sessionStorage.getItem("user");
+  let user = JSON.parse(userId);
+
+  // confirm button
+  document.getElementById("confirm").addEventListener("click", () => {
+    getData("http://localhost:3000/ID", "DELETE", user).then((result) => {
+      alert(result.message);
+      sessionStorage.clear();
+      window.location.href = "./loginpage.html";
+    });
+  });
+}
+
+function update() {
+  document.getElementById("submitNewEmail").addEventListener("click", (e) => {
+    e.preventDefault();
     let userId = sessionStorage.getItem("user");
+
     let user = JSON.parse(userId);
-
-
-    document.getElementById('submitNewEmail').addEventListener('click' ,e => {
-        e.preventDefault()
-
-
-            getData("http://localhost:3000/ID", "PUT", user).then(result => {
-                alert(result.message);
-
-          
-    
-          });
-
-
+    let email = document.getElementById('emailInputForm').value
+const Update = {
+        "email" : email,
+        "firstname" : user.firstname,
+        "lastname" : user.lastname,
+        "password" : user.password,
+        "uuid" : user.uuid
+      };
+    getData("http://localhost:3000/ID", "PUT", Update).then(result => {
+      
+      sessionStorage.setItem("user", JSON.stringify(Update));
+      alert(result.data);
 
     });
+  });
 }
 
 async function getData(url, method, data) {
-    let resp = await fetch(url, {
-      method: method,
-      headers: {
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify(data),
-    });
-    return await resp.json();
-  }
-
-
-
-
-
-
-
-
-
+  let resp = await fetch(url, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return await resp.json();
+}
