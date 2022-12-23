@@ -311,6 +311,7 @@ button {
 }
 .NotRegistered {
   padding: 5px;
+  padding-top: 20px;
   
 }
 .NotRegistered button {

@@ -11,7 +11,11 @@ window.onload = function () {
   //update emaile
   document.getElementById("changeEmail").addEventListener("click", () => {
     document.getElementById("emailInput").style.display = "block";
-    update();
+  });
+
+  //update password
+  document.getElementById("updatepassword").addEventListener("click", () => {
+    document.getElementById("passwordInput").style.display = "block";
   });
 
   //logout
@@ -28,7 +32,9 @@ function profiledata() {
   let data = JSON.parse(userId);
   let email = data.email;
   let firstname = data.firstname;
+  let password = data.password;
   let lastname = data.lastname;
+  let id = data.uuid;
 
   let htmlString = "";
 
@@ -39,7 +45,7 @@ function profiledata() {
   
     <h2>Email :  ${email} </h2>
     <div class="changeEmail">
-   <button><h3> Change mail <i class="material-icons updateacc" id="changeEmail">create</i></h3></button>
+   <button id="changeEmail"><h3> Change mail <i class="material-icons updateacc" >create</i></h3></button>
     </div>
     <div class="emailInput" style="display: none;" id="emailInput">
     <input type="text"  id="emailInputForm" name="email" placeholder="New email">
@@ -48,22 +54,26 @@ function profiledata() {
     </div>
     <h2>Password : <h2 type ="password"> </h2></h2>
     <div class="Passwordchange">
-    <button><h3><a id="passwordShow">Change password <i class="material-icons updatepassword" id="updatepassword">create</i></a></h3></button>
+    <button id="updatepassword"><h3><a>Change password <i class="material-icons updatepassword" >create</i></a></h3></button>
     </div>
     <div class="passwordInput" style="display: none;" id="passwordInput">
     <form class="passwordChangeForm" id="passwordChangeForm">
-    <input type="text" class="passwordInputForm" id="passwordInputForm" name="password" placeholder="New password">
-    <button type="submit" class="submitpasswordChange" id="submitpasswordChange">Change password</button>
+    <input type="text"  id="Newpassword" name="password" placeholder="New password">
+
+    <button type="submit" class="submitpassword" id="submitpassword">Change password</button>
 
     </form>
     </div>
     `;
-
   let profileData = document.getElementById("profiledata");
 
   profileData.insertAdjacentHTML("afterbegin", htmlString);
+
+  updatemail(firstname, lastname, password, id);
+  updatepassword(email, firstname, lastname, id);
 }
 
+// DELETE PROFILE
 function deletProfile() {
   let userId = sessionStorage.getItem("user");
   let user = JSON.parse(userId);
@@ -78,25 +88,56 @@ function deletProfile() {
   });
 }
 
-function update() {
+//CHANGEMAIL
+function updatemail(firstname, lastname, password, id) {
   document.getElementById("submitNewEmail").addEventListener("click", (e) => {
     e.preventDefault();
-    let userId = sessionStorage.getItem("user");
 
-    let user = JSON.parse(userId);
-    let email = document.getElementById('emailInputForm').value
-const Update = {
-        "email" : email,
-        "firstname" : user.firstname,
-        "lastname" : user.lastname,
-        "password" : user.password,
-        "uuid" : user.uuid
-      };
-    getData("http://localhost:3000/ID", "PUT", Update).then(result => {
-      
+    let email = document.getElementById("emailInputForm").value;
+    const Update = {
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      password: password,
+      uuid: id,
+    };
+    getData("http://localhost:3000/ID", "PUT", Update).then((data) => {
       sessionStorage.setItem("user", JSON.stringify(Update));
-      alert(result.data);
 
+      if (data.succes == "Successfully update!") {
+        location.reload();
+      } else {
+        alert(JSON.stringify(data));
+      }
+    });
+  });
+}
+
+// CHANGEPASSWORD
+
+function updatepassword(email, firstname, lastname, id) {
+  document.getElementById("submitpassword").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    let password = document.getElementById("Newpassword").value;
+    console.log(password);
+    const UpdatePassword = {
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      password: password,
+      uuid: id,
+    };
+    getData("http://localhost:3000/ID", "PUT", UpdatePassword).then((data) => {
+      sessionStorage.setItem("user", JSON.stringify(UpdatePassword));
+
+      if (data.succes == "Successfully update!") {
+        alert(JSON.stringify(data.succes));
+
+        location.reload();
+      } else {
+        alert(JSON.stringify(data));
+      }
     });
   });
 }
