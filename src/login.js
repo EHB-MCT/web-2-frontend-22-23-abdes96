@@ -8,7 +8,7 @@ window.onload = function () {
     user.password = document.getElementById("inputpassword").value;
 
 
-    getData("http://localhost:3000/login", "POST", user).then(result => {
+    getData("http://localhost:3000/user/login", "POST", user).then(result => {
       alert(result.message);
       sessionStorage.setItem('user', JSON.stringify(result.data));
 

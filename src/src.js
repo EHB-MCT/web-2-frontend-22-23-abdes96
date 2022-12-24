@@ -48,6 +48,7 @@ const app = {
         });
         this.render();
         this.InfoPage();
+        this.SendToList();
       });
   },
 
@@ -101,6 +102,53 @@ const app = {
         window.location.href = `./showinfo.html?id=${showName}`;
       });
     });
+  },
+
+  // Send a show to my list page
+  SendToList() {
+    const buttonshtml = document.getElementsByClassName("addbtn");
+
+    let buttons = Array.from(buttonshtml);
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        let userId = sessionStorage.getItem("user");
+
+        
+
+        let showId = button.parentNode.firstElementChild.id; //
+
+
+        let showName = button.parentNode.firstElementChild;
+
+        let showImg = button.parentNode.firstElementChild.firstElementChild.firstElementChild.src;
+let show = {
+         userId : userId,
+          showId : showId,
+          showImg : showImg,
+};
+
+          this.getData("http://localhost:3000/show", "POST", show).then(
+            (result) => {
+              alert(result.message);
+              sessionStorage.setItem("show", JSON.stringify(result.data));
+
+             
+            }
+          );
+      });
+    });
+  },
+
+  async getData(url, method, data) {
+    let resp = await fetch(url, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return await resp.json();
   },
 };
 
