@@ -18,7 +18,7 @@ window.onload = function () {
 
       }
       else {
-        window.location.href = "./index.html"
+        window.location.href = "./shows.html"
       }
 
     });
