@@ -1,5 +1,4 @@
 "use strict";
-//import Cleave from "cleave.js";
 import Shows from "./Shows.js";
 
 const app = {
