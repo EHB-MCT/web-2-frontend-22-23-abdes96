@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+  <head>
+    <title>Whichshow</title>
+    <link rel="icon" type="image/x-icon" href="/image/logo.png">
+    <script type='module' src="../../src/src.js" defer></script>
+    
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <header>
+      <div class="logo">
+        <img src="../image/logo.png">
+    </div>
+      <div class="navigation">
+          <ul>
+              <li><a href="shows.html">SHOWS</a></li>
+              <li><a href="mylist.html">MY LIST</a>
+                <li><a href="myprofile.html">MY PROFILE</a>
+              </li>
+          </ul>
+      </div>
+      
+    </header>
+    <div id="welcom"></div>
+  <div class="wrap">
+    <div class="Search">
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Search by titel" />
+    <button type="submit" class="searchButton"> search
+   </button>
+  </form>
+     <div class="genre">
+  <h1>Filter by genre</h1>
+  <div class="select">
+     <select name="genre" id="genre">
+        <option selected disabled>Genres</option>
+        <option value="Crime">Crime</option>
+        <option value="Drama">Drama</option>
+        <option value="Action">Action</option>
+        <option value="Science-Fiction">Science-Fiction</option>
+        <option value="Horror">Horror</option>
+        <option value="Romance">Romance</option>
+     </select>
+  </div>
+</div>
+   </div>
+
+    <div class="movies">
+    <h1>Shows & movies</h1>
+      <div id="eventContainer">
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
