@@ -21,7 +21,7 @@ document.getElementById("signIn").addEventListener("submit", e => {
           //console.log('missing')
         }
         else {
-          window.location.href = "./index.html"
+          window.location.href = "../index.html"
 
         }
 
