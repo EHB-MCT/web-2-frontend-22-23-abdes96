@@ -21,7 +21,7 @@ window.onload = function () {
   //logout
   document.getElementById("Logout").addEventListener("click", () => {
     sessionStorage.clear();
-    window.location.href = "./index.html";
+    window.location.href = "../docs/index.html";
   });
 };
 
