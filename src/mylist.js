@@ -8,7 +8,7 @@ function getshows() {
     let show = sessionStorage.getItem("show");
 
 
-     getData("http://localhost:3000/show", "GET", show).then( (result) => {
+     getData("https://web2project.onrender.com/show", "GET", show).then( (result) => {
         
     let data = JSON.parse(show);
 

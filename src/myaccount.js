@@ -80,7 +80,7 @@ function deletProfile() {
 
   // confirm button
   document.getElementById("confirm").addEventListener("click", () => {
-    getData("http://localhost:3000/user/ID", "DELETE", user).then((result) => {
+    getData("https://web2project.onrender.com/user/ID", "DELETE", user).then((result) => {
       alert(result.message);
       sessionStorage.clear();
       window.location.href = "./loginpage.html";
@@ -101,10 +101,12 @@ function updatemail(firstname, lastname, password, id) {
       password: password,
       uuid: id,
     };
-    getData("http://localhost:3000/user/ID", "PUT", Update).then((data) => {
+    getData("https://web2project.onrender.com/user/ID", "PUT", Update).then((data) => {
       sessionStorage.setItem("user", JSON.stringify(Update));
 
       if (data.succes == "Successfully update!") {
+        alert(JSON.stringify(data.succes));
+
         location.reload();
       } else {
         alert(JSON.stringify(data));
@@ -128,7 +130,7 @@ function updatepassword(email, firstname, lastname, id) {
       password: password,
       uuid: id,
     };
-    getData("http://localhost:3000/user/ID", "PUT", UpdatePassword).then(
+    getData("https://web2project.onrender.com/user/ID", "PUT", UpdatePassword).then(
       (data) => {
         sessionStorage.setItem("user", JSON.stringify(UpdatePassword));
 

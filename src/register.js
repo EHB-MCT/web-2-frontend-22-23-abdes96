@@ -14,7 +14,7 @@ document.getElementById("signIn").addEventListener("submit", e => {
 
   //check passwords
   if(user.password == user.password2) {
-    getData("http://localhost:3000/user/register","POST", user).then(result => {
+    getData("https://web2project.onrender.com/user/register","POST", user).then(result => {
         alert(result.message)
         sessionStorage.setItem('user', JSON.stringify(result.data))
         if (result.data == null ) {

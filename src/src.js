@@ -127,7 +127,7 @@ let show = {
           showImg : showImg,
 };
 
-          this.getData("http://localhost:3000/show", "POST", show).then(
+          this.getData("https://web2project.onrender.com/show", "POST", show).then(
             (result) => {
               alert(result.message);
               sessionStorage.setItem("show", JSON.stringify(result.data));
