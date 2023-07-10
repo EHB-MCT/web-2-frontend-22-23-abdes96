@@ -2,12 +2,14 @@
 import Shows from "./Shows.js";
 
 const app = {
+
   showlist: [],
   filteredEventList: [],
   searchTerm: "",
 
   setup() {
     window.onload = () => {
+     
       this.fetchEvents();
 
       document.getElementById("searchForm").addEventListener("keyup", () => {
@@ -113,28 +115,23 @@ const app = {
       button.addEventListener("click", () => {
         let userId = sessionStorage.getItem("user");
 
-        
-
         let showId = button.parentNode.firstElementChild.id; //
 
+        let showImg =
+          button.parentNode.firstElementChild.firstElementChild
+            .firstElementChild.src;
+        let show = {
+          userId: userId,
+          showId: showId,
+          showImg: showImg,
+        };
 
-        let showName = button.parentNode.firstElementChild;
-
-        let showImg = button.parentNode.firstElementChild.firstElementChild.firstElementChild.src;
-let show = {
-         userId : userId,
-          showId : showId,
-          showImg : showImg,
-};
-
-          this.getData("https://web2project.onrender.com/show", "POST", show).then(
-            (result) => {
-              alert(result.message);
-              sessionStorage.setItem("show", JSON.stringify(result.data));
-
-             
-            }
-          );
+        this.getData("http://localhost:4000/show", "POST", show).then(
+          (result) => {
+            alert(result.message);
+            sessionStorage.setItem("show", JSON.stringify(result.data));
+          }
+        );
       });
     });
   },

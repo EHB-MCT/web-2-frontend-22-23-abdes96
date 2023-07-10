@@ -1,46 +1,42 @@
 window.onload = function () {
-    getshows();
+  getShows();
 
-function getshows() {
-    let container = document.getElementById("shows");
-    let htmlString = ""
-   
-    let show = sessionStorage.getItem("show");
+  async function getShows() {
+    try {
+      let container = document.getElementById("shows");
+      container.innerHTML = "";
 
+      let userId = sessionStorage.getItem("user");
+      let shows = await getData(
+        `http://localhost:4000/show/listshows/${userId}`,
+        "GET"
+      );
 
-     getData("https://web2project.onrender.com/show", "GET", show).then( (result) => {
-        
-    let data = JSON.parse(show);
+      for (let i = 0; i < shows.length; i++) {
+        let show = shows[i];
+        let htmlString = `
+          <div class="showsect">
+            <div class="show">
+              <img class="img" src="${show.showImg}" alt="" style="">
+              <p class="showt "><b class="showssid" id="${show.showId}"><button></b>delete</button></p>
+            </div>
+          </div>
+        `;
+        container.insertAdjacentHTML("beforeend", htmlString);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-    console.log(data);
- 
-             
-
-        
-                htmlString = `
-                    <div class="showsect">
-                    <div class="show">
-                    <img class="img" src="${data.showImg}" alt="" style="">
-
-                    <p class="showt "><b class="showssid" id="${data.showId}"><button></b>delete</button></p>
-                    </div>
-                </div>
-                   `
-            
-            container.insertAdjacentHTML("beforeend", htmlString)
-
-         });
-}
-
-
-async function getData(url, method, data) {
+  async function getData(url, method, data) {
     let resp = await fetch(url, {
       method: method,
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(),
+      body: JSON.stringify(data),
     });
     return await resp.json();
   }
-}
+};

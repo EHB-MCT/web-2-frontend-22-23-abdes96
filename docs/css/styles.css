@@ -13,6 +13,7 @@ body {
 }
 header {
   width: 95%;
+  margin: auto;
   margin-top: 50px;
   display: flex;
   justify-content: center;
@@ -50,6 +51,7 @@ header {
 
 .wrap {
   display: flex;
+  justify-content: center;
 }
 .Search h1 {
   display: flex;

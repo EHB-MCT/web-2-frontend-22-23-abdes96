@@ -6,19 +6,18 @@ window.onload = function () {
     user.email = document.getElementById("inputemail").value;
     user.password = document.getElementById("inputpassword").value;
 
-    getData("https://web2project.onrender.com/user/login", "POST", user).then(
-      (result) => {
-        alert(result.message);
-        sessionStorage.setItem("user", JSON.stringify(result.data));
+    getData("http://localhost:4000/user/login", "POST", user).then((result) => {
+      alert(result.message);
+      sessionStorage.setItem("user", JSON.stringify(result.data));
 
-        if (result.data == null) {
-          console.log("missing");
-          document.getElementById("loginwrong").style.display = "block";
-        } else {
-          window.location.href = "./html/shows.html";
-        }
+      if (result.data == null) {
+        console.log("missing");
+        document.getElementById("loginwrong").style.display = "block";
+      } else {
+        let uuid = result.data.uuid;
+        window.location.href = `./html/shows.html?id=${uuid}`;
       }
-    );
+    });
   });
 
   async function getData(url, method, data) {

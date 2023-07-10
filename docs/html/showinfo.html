@@ -15,15 +15,27 @@
       <div class="logo">
         <img src="../image/logo.png">
     </div>
-      <div class="navigation">
-          <ul>
-            <li><a href="shows.html">SHOWS</a></li>
-            <li><a href="mylist.html">MY LIST</a>
-              <li><a href="myprofile.html">MY PROFILE</a>
-            </li>
-          </ul>
+    <div class="navigation">
+      <ul>
+        <li><a href="#" id="navLink" data-destination="shows.html">SHOWS</a></li>
+        <li><a href="#" id="navLink" data-destination="mylist.html">MY LIST</a></li>
+        <li><a href="#" id="navLink" data-destination="myprofile.html">MY PROFILE</a></li>
+      </ul>
+    </div>
+    <script>
+      // add event listener to navigation links
+      document.querySelectorAll("#navLink").forEach(link => {
+    link.addEventListener("click", () => {
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    let uuid = user.uuid;
 
-      </div>
+    let destination = link.dataset.destination;
+    let url = `${destination}?uuid=${uuid}`;
+
+    window.location.href = url;
+  });
+});
+    </script>
 
     </header>
   <div class="wrap">
