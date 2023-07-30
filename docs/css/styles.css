@@ -263,6 +263,13 @@ button {
   display: block;
 }
 
+.shows {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .login {
   display: flex;
   flex: 1;

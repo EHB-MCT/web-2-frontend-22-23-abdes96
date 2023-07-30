@@ -9,7 +9,8 @@ const app = {
 
   setup() {
     window.onload = () => {
-     
+      this.showLoading();
+
       this.fetchEvents();
 
       document.getElementById("searchForm").addEventListener("keyup", () => {
@@ -26,9 +27,36 @@ const app = {
     };
   },
 
+   showLoading() {
+    let container = document.createElement("div");
+    container.className = "loading-container";
+    container.style.position = "fixed";
+    container.style.top = 0;
+    container.style.left = 0;
+    container.style.width = "100%";
+    container.style.height = "100%";
+    container.style.display = "flex";
+    container.style.justifyContent = "center";
+    container.style.alignItems = "center";
+    container.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    container.style.backdropFilter = "blur(10px)";
+    document.body.appendChild(container);
+  
+    let loading = document.createElement("h2");
+    loading.textContent = "Loading...";
+    container.appendChild(loading);
+  },
+   hideLoading() {
+    let container = document.querySelector(".loading-container");
+    if (container) {
+      container.remove();
+    }
+  },
+
   fetchEvents() {
     fetch("https://api.tvmaze.com/shows")
       .then((response) => {
+        this.hideLoading();
         return response.json();
       })
       .then((data) => {
@@ -50,6 +78,13 @@ const app = {
         this.render();
         this.InfoPage();
         this.SendToList();
+      })
+      .catch((error) => {
+        console.log(error);
+        this.hideLoading();
+        const errorEl = document.createElement("h2");
+        errorEl.textContent = "Failed to fetch the data";
+        document.getElementById("eventContainer").appendChild(errorEl);
       });
   },
 
@@ -110,11 +145,10 @@ const app = {
     const buttonshtml = document.getElementsByClassName("addbtn");
 
     let buttons = Array.from(buttonshtml);
-
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         let userId = sessionStorage.getItem("user");
-
+        let uuid = JSON.parse(userId).uuid;
         let showId = button.parentNode.firstElementChild.id; //
 
         let showImg =
@@ -123,6 +157,7 @@ const app = {
         let show = {
           userId: userId,
           showId: showId,
+          uuid: uuid,
           showImg: showImg,
         };
 
