@@ -6,8 +6,8 @@ window.onload = function () {
       let container = document.getElementById("shows");
       container.innerHTML = "";
 
-      let params = new URLSearchParams(window.location.search);
-      let uuid = params.get("uuid");
+      let userId = sessionStorage.getItem("user");
+      let uuid = JSON.parse(userId).uuid;
 
       let data = await getData(
         `http://localhost:4000/show/listshows/${uuid}`,

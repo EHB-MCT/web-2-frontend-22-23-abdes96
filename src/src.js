@@ -133,37 +133,49 @@ const app = {
 
         let showName = show.id;
         console.log(showName);
-        //https://www.w3schools.com/js/js_window_location.asp
 
         window.location.href = `./showinfo.html?id=${showName}`;
       });
     });
   },
 
-  // Send a show to my list page
   SendToList() {
     const buttonshtml = document.getElementsByClassName("addbtn");
-
+  
     let buttons = Array.from(buttonshtml);
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         let userId = sessionStorage.getItem("user");
         let uuid = JSON.parse(userId).uuid;
         let showId = button.parentNode.firstElementChild.id; //
-
+        let showName = button.parentNode.firstElementChild.querySelector("#name").innerText;
+  
         let showImg =
           button.parentNode.firstElementChild.firstElementChild
             .firstElementChild.src;
         let show = {
           userId: userId,
           showId: showId,
+          showName: showName,
           uuid: uuid,
           showImg: showImg,
         };
-
+  
         this.getData("http://localhost:4000/show", "POST", show).then(
           (result) => {
-            alert(result.message);
+            let message = result.message;
+  
+            let messagePopup = document.createElement("div");
+            messagePopup.innerText = message;
+            messagePopup.id = "message-popup";
+  
+            document.body.appendChild(messagePopup);
+            messagePopup.style.display = "block";
+  
+            setTimeout(() => {
+              messagePopup.remove();
+            }, 3000);
+            
             sessionStorage.setItem("show", JSON.stringify(result.data));
           }
         );

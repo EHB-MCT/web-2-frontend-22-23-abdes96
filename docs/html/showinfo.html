@@ -2,8 +2,8 @@
   <head>
     <title>Whichshow</title>
     <link rel="icon" type="image/x-icon" href="/image/logo.png">
-    <script type='module' src="../js/src.js" defer></script>
-    <script type='module' src="../js/showinfo.js" defer></script>
+    <script type='module' src="../../src/Showinfo.js" defer></script>
+
 
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,12 +18,11 @@
     <div class="navigation">
       <ul>
         <li><a href="#" id="navLink" data-destination="shows.html">SHOWS</a></li>
-        <li><a href="#" id="navLink" data-destination="mylist.html">MY LIST</a></li>
-        <li><a href="#" id="navLink" data-destination="myprofile.html">MY PROFILE</a></li>
+        <li><a href="mylist.html" id="navLink2">MY LIST</a></li>
+        <li><a href="myprofile.html" id="navLink3">MY PROFILE</a></li>
       </ul>
     </div>
     <script>
-      // add event listener to navigation links
       document.querySelectorAll("#navLink").forEach(link => {
     link.addEventListener("click", () => {
     let user = JSON.parse(sessionStorage.getItem("user"));
@@ -41,7 +40,7 @@
   <div class="wrap">
    
 
-    <div id="show">
+    <div id="showinfo">
 
         </div>
     
