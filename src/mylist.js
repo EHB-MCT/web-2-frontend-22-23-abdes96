@@ -1,6 +1,5 @@
 window.onload = function () {
   getShows();
-
   async function getShows() {
     try {
       let container = document.getElementById("shows");
@@ -20,15 +19,20 @@ showLoading();
         return;
       }
 
-      
+      data.shows.reverse();
+
 
       for (let i = 0; i < data.shows.length; i++) {
         let show = data.shows[i];
         let showImg = data.shows[i].showImg;
+        let showName = data.shows[i].showName;
+
         let htmlString = `
           <div class="showsect">
             <div class="show">
               <img class="img" src="${showImg}" alt="">
+              <div><h1 id="name">${showName}</h1></div>
+
               <p class="showt"><b class="showssid" id="${show.showId}"><button class="delete-btn">Delete</button></b></p>
             </div>
           </div>
@@ -46,6 +50,8 @@ showLoading();
           deleteShow(uuid, showId);
         });
       }
+      InfoPage();
+
     } catch (error) {
       console.log(error);
     }
@@ -103,6 +109,16 @@ showLoading();
     if (container) {
       container.remove();
     }
+  }
+
+  function InfoPage() {
+    let imgElements = document.querySelectorAll(".img");
+    imgElements.forEach((img) => {
+      img.addEventListener("click", function () {
+        let showId = this.closest(".show").querySelector(".showssid").id;
+        window.location.href = `./showinfo.html?id=${showId}`;
+      });
+    });
   }
 
   async function getData(url, method, data) {
