@@ -18,7 +18,7 @@ export default class Shows {
     <div><h1 id="name">${this._title}</h1></div>
     <p class="genre">${this._genres}</p>
     <p class="runtime">${this._runtime} min</p></div>
-    <button class ="addbtn name="addbtn">  <span>  add to to-see list</span></button>
+    <button class ="addbtn name="addbtn">  <span>  add to your list</span></button>
 </div>
   `;
   }

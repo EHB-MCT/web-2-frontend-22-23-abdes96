@@ -156,6 +156,14 @@ select::-ms-expand {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
 img {
   border-radius: 10px;
 }
@@ -368,8 +376,15 @@ padding: 15px;
 width: 100%;
 
 }
+.inputs1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+}
 
-input  {
+ input  {
   margin-top: 15px;
   width: 100%;
   padding-top: 15px;

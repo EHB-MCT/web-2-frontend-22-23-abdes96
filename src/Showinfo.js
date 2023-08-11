@@ -83,13 +83,15 @@ function SendToList(showName , showImg) {
       getData("http://localhost:4000/show", "POST", show).then(
         (result) => {
           let message = result.message;
-
-          let messagePopup = document.createElement("div");
+  
+          let messagePopup = document.createElement("h2");
           messagePopup.innerText = message;
           messagePopup.id = "message-popup";
+          messagePopup.style.backgroundColor = "black";
 
           document.body.appendChild(messagePopup);
           messagePopup.style.display = "block";
+
 
           setTimeout(() => {
             messagePopup.remove();

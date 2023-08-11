@@ -6,24 +6,39 @@ const app = {
   showlist: [],
   filteredEventList: [],
   searchTerm: "",
-
+  itemsPerPage: 21, 
+  currentPage: 1,
   setup() {
     window.onload = () => {
       this.showLoading();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const pageParam = urlParams.get("page");
+      this.currentPage = parseInt(pageParam) || 1;
 
       this.fetchEvents();
 
       document.getElementById("searchForm").addEventListener("keyup", () => {
         let value = document.getElementById("searchInput").value;
         this.applyFilter(value.toLowerCase());
-        //console.log(value);
+        //  console.log(value);
       });
 
       document.getElementById("genre").addEventListener("click", () => {
         let genre = document.getElementById("genre").value;
 
         this.genreFilter(genre);
+      
       });
+        document.getElementById("prevPageBtn").addEventListener("click", () => {
+          console.log('tet');
+          this.changePage(this.currentPage - 1);
+        });
+  
+        document.getElementById("nextPageBtn").addEventListener("click", () => {
+          this.changePage(this.currentPage + 1);
+        });
+     
     };
   },
 
@@ -89,13 +104,35 @@ const app = {
   },
 
   render() {
+    let startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    let endIndex = startIndex + this.itemsPerPage;
+    let currentPageShows = this.showlist.slice(startIndex, endIndex);
+
     let htmlEvent = document.getElementById("eventContainer");
     htmlEvent.innerHTML = "";
-    let htmlString = "";
-    this.showlist.forEach((element) => {
-      htmlString += element.htmlString;
+
+    currentPageShows.forEach((element) => {
+      htmlEvent.innerHTML += element.htmlString;
     });
-    htmlEvent.innerHTML = htmlString;
+  },
+
+  changePage(newPage) {
+    if (newPage < 1 || newPage > Math.ceil(this.showlist.length / this.itemsPerPage)) {
+      return; 
+    }
+
+    this.currentPage = newPage;
+    this.render();
+    this.updateUrlWithPage(this.currentPage);
+
+  },
+
+  updateUrlWithPage(pageNumber) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("page", pageNumber);
+
+    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, null, newUrl);
   },
 
   applyFilter(value) {
@@ -168,7 +205,6 @@ const app = {
             let messagePopup = document.createElement("h2");
             messagePopup.innerText = message;
             messagePopup.id = "message-popup";
-            messagePopup.style.color = "rgb(126, 40, 40)";
             messagePopup.style.backgroundColor = "black";
 
             document.body.appendChild(messagePopup);

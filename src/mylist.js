@@ -14,10 +14,10 @@ window.onload = function () {
       );
 showLoading();
       if (!data.shows) {
-        let emptyShowsMessage = document.createElement("h2");
-        container.style.justifyContent = "center";  
-        container.style.alignItems = "center";   
-        emptyShowsMessage.textContent = "The shows you have added to your list are empty. Add shows to remember what you have to watch.";
+        let emptyShowsMessage = document.createElement("p");
+        container.style.margin = "100px";   
+
+        emptyShowsMessage.textContent = "(The shows you have added to your list are empty. Add shows to remember what you have to watch.)";
         container.appendChild(emptyShowsMessage);
           hideLoading();
         return;
