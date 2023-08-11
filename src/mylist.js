@@ -14,8 +14,12 @@ window.onload = function () {
       );
 showLoading();
       if (!data.shows) {
-        container.innerHTML = "The shows you have added to your list are empty. Add shows to remember what you have to watch.";
-        hideLoading();
+        let emptyShowsMessage = document.createElement("h2");
+        container.style.justifyContent = "center";  
+        container.style.alignItems = "center";   
+        emptyShowsMessage.textContent = "The shows you have added to your list are empty. Add shows to remember what you have to watch.";
+        container.appendChild(emptyShowsMessage);
+          hideLoading();
         return;
       }
 
@@ -61,23 +65,30 @@ showLoading();
     try {
       showLoading();
 
-      const response = await fetch(`http://localhost:4000/show/${uuid}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ showId }),
-      });
+      let response = await getData(`http://localhost:4000/show/${uuid}`, "DELETE", { showId });
 
-      const data = await response.json();
 
       hideLoading();
 
-      if (response.ok) {
-        alert(data.message);
-        getShows();
+      if (response.message) {
+        let message = response.message;
+  
+        let messagePopup = document.createElement("h2");
+        messagePopup.innerText = message;
+        messagePopup.id = "message-popup";
+        messagePopup.style.color = "rgb(126, 40, 40)";
+        messagePopup.style.backgroundColor = "black";
+
+        document.body.appendChild(messagePopup);
+        messagePopup.style.display = "block";
+
+        setTimeout(() => {
+          messagePopup.remove();
+        }, 3000);        getShows();
       } else {
-        alert(data.message);
+
+        alert(`Error: ${response.error}`);
+      
       }
     } catch (error) {
       console.log(error);

@@ -165,10 +165,12 @@ const app = {
           (result) => {
             let message = result.message;
   
-            let messagePopup = document.createElement("div");
+            let messagePopup = document.createElement("h2");
             messagePopup.innerText = message;
             messagePopup.id = "message-popup";
-  
+            messagePopup.style.color = "rgb(126, 40, 40)";
+            messagePopup.style.backgroundColor = "black";
+
             document.body.appendChild(messagePopup);
             messagePopup.style.display = "block";
   
