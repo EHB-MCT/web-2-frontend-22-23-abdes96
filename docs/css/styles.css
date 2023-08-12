@@ -161,7 +161,7 @@ select::-ms-expand {
   margin-top: 20px;
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin: 50px;
 }
 
 img {

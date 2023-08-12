@@ -137,24 +137,41 @@ const app = {
 
   applyFilter(value) {
     this.searchTerm = value;
+
+    document.getElementById("genre").value = "";
+    
     const filter = this.filteredEventList.filter((element) => {
       if (element._title.toLowerCase().includes(value)) {
         return true;
       }
     });
     this.showlist = filter;
+    this.currentPage = 1;
+    this.updateUrlWithPage(this.currentPage);
+
     this.render();
     this.InfoPage();
   },
 
   genreFilter(genre) {
-    const filterGenre = this.filteredEventList.filter((element) => {
+
+    if (genre == "") {
+      this.showlist = this.filteredEventList;
+      
+    }
+    else {
+
+      const filterGenre = this.filteredEventList.filter((element) => {
       if (element._genres.includes(genre)) {
         return true;
       }
     });
 
     this.showlist = filterGenre;
+    }
+    this.currentPage = 1;
+    this.updateUrlWithPage(this.currentPage);
+
     this.render();
     this.InfoPage();
   },
