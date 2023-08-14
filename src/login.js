@@ -6,7 +6,7 @@ window.onload = function () {
     user.email = document.getElementById("inputemail").value;
     user.password = document.getElementById("inputpassword").value;
 
-    getData("http://localhost:4000/user/login", "POST", user).then((result) => {
+    getData("http://web2project.onrender.com/user/login", "POST", user).then((result) => {
       alert(result.message);
       sessionStorage.setItem("user", JSON.stringify(result.data));
 

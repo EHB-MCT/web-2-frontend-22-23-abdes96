@@ -9,7 +9,7 @@ window.onload = function () {
       let uuid = JSON.parse(userId).uuid;
 
       let data = await getData(
-        `http://localhost:4000/show/listshows/${uuid}`,
+        `http://web2project.onrender.com/show/listshows/${uuid}`,
         "GET"
       );
 showLoading();
@@ -65,7 +65,7 @@ showLoading();
     try {
       showLoading();
 
-      let response = await getData(`http://localhost:4000/show/${uuid}`, "DELETE", { showId });
+      let response = await getData(`http://web2project.onrender.com/show/${uuid}`, "DELETE", { showId });
 
 
       hideLoading();
