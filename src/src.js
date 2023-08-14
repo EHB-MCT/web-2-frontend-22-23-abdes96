@@ -215,7 +215,7 @@ const app = {
           showImg: showImg,
         };
   
-        this.getData("http://web2project.onrender.com/show", "POST", show).then(
+        this.getData("https://web2project.onrender.com/show", "POST", show).then(
           (result) => {
             let message = result.message;
   

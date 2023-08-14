@@ -80,7 +80,7 @@ function SendToList(showName , showImg) {
         showImg: showImg,
       };
 
-      getData("http://web2project.onrender.com/show", "POST", show).then(
+      getData("https://web2project.onrender.com/show", "POST", show).then(
         (result) => {
           let message = result.message;
   
