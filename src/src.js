@@ -124,6 +124,8 @@ const app = {
     this.currentPage = newPage;
     this.render();
     this.updateUrlWithPage(this.currentPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
 
   },
 
