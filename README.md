@@ -18,6 +18,8 @@ repisetory : https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96
 ### Backend sources
 repository : https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96
 api host : https://web2project.onrender.com
+https://www.youtube.com/watch?v=0Hu27PoloYw router
+
 
 Usage of all video tutorial of teacher from Mongo, express ,Postman
 
