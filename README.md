@@ -16,7 +16,10 @@ https://developer.mozilla.org/fr/docs/Web/API/Node/parentNode
 repisetory : https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96
 
 ### Backend sources
-repisetory : https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96
+repository : https://github.com/EHB-MCT/web-2-frontend-22-23-abdes96
 api host : https://web2project.onrender.com
 
 Usage of all video tutorial of teacher from Mongo, express ,Postman
+
+Toegevoegde functionaliteit sinds het laatste examen
+Ik heb een "Toevoegen aan Lijst" functie geïmplementeerd, zodat gebruikers een lijst kunnen bijhouden van shows die ze willen bekijken. Ze kunnen ook shows verwijderen uit de lijst. Dit biedt gebruikers een gepersonaliseerde manier om hun shows te beheren en draagt bij aan een verbeterde gebruikerservaring.
